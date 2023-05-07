@@ -6,6 +6,8 @@ public class FootstepSound : MonoBehaviour
 {
     public AudioClip[] footstepsOnGrass;
     public AudioClip[] footstepsOnWood;
+    public AudioClip jump;
+    public AudioClip fall;
 
     public string material;
 
@@ -30,6 +32,22 @@ public class FootstepSound : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void PlayJumpSound()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.volume = Random.Range(0.9f, 1.0f);
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(jump);
+    }
+
+    public void PlayFallSound()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.volume = Random.Range(0.9f, 1.0f);
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(fall);
     }
 
     void OnCollisionEnter(Collision collision)
